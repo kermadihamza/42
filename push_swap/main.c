@@ -17,5 +17,8 @@ int main(int argc, char **argv)
         ft_lstadd_back(&stack_a, ft_lstnew(&number[i]));
         i++;
     }
+    the_index(stack_a, number, argc);
+    //case_three(&stack_a);
+    case_five(&stack_a, &stack_b);
     ft_printlst(stack_a);
 }
