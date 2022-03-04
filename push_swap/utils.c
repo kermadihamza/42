@@ -10,14 +10,6 @@ void ft_printlst(t_list *lst)
     }
 }
 
-
-
-
-
-
-
-
-
 int *ft_pars(int argc, char **argv)
 {
 	int i;
