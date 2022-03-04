@@ -2,6 +2,7 @@
 # define PUSH_SWAP_H
 #include "./libft/libft.h"
 #include <stdio.h>
+#include <fcntl.h>
 
 void	ft_printlst(t_list *lst);
 void	ft_swap_a(t_list **stack_a);
@@ -19,5 +20,11 @@ int		*ft_pars(int argc, char **argv);
 int		ft_atoi_push(const char *str);
 void	case_three(t_list **stack_a);
 void	case_five(t_list **stack_a, t_list **stack_b);
-void the_index(t_list *stack_a, int *number, int argc);
+void	the_index(t_list *stack_a, int *number, int argc);
+void	case_four(t_list **stack_a, t_list **stack_b);
+void	radix_sort(t_list **stack_a, t_list **stack_b);
+void	sort_stack(t_list **stack_a, t_list **stack_b);
+int	is_sorted(t_list **stack);
+void	free_stack(t_list **stack);
+void	simple_sort(t_list **stack_a, t_list **stack_b);
 #endif
