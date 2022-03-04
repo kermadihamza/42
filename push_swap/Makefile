@@ -1,4 +1,4 @@
-SRCS = main.c utils.c ft_atoi_push.c push_swap.c sort_little.c radix.c
+SRCS = main.c utils.c ft_atoi_push.c push_swap.c sort_little.c radix.c operations/swap.c operations/push.c operations/rotate.c operations/reverse_rotate.c
 OBJS = ${SRCS:.c=.o}
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror

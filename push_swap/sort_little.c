@@ -68,7 +68,6 @@ void	case_five(t_list **stack_a, t_list **stack_b)
     int i;
     int first;
     int j;
-    //int temp_stack;
     t_list *temp_stack;
 
     i = 0;
@@ -100,7 +99,6 @@ void	case_five(t_list **stack_a, t_list **stack_b)
                 ft_reverse_retate_a(stack_a);
         }
         ft_push_b(stack_a, stack_b);
-        //ft_push_b(stack_a, stack_b);
         i++;
     }
     //ft_printlst(*stack_a);
