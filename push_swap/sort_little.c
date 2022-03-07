@@ -1,5 +1,11 @@
 #include "push_swap.h"
 
+void	case_two(t_list **lst)
+{
+	if (*(int *)(*lst)->content > *(int *)(*lst)->next->content)
+		ft_swap_a(lst);
+}
+
 void	case_three(t_list **stack_a)
 {
     t_list *stack = *stack_a;
@@ -114,22 +120,4 @@ void	case_five(t_list **stack_a, t_list **stack_b)
     case_three(stack_a);
     ft_push_a(stack_a, stack_b);
     ft_push_a(stack_a, stack_b);
-}
-
-void	simple_sort(t_list **stack_a, t_list **stack_b)
-{
-	int	size;
-
-	if (is_sorted(stack_a) || ft_lstsize(*stack_a) == 0
-		|| ft_lstsize(*stack_a) == 1)
-		return ;
-	size = ft_lstsize(*stack_a);
-	if (size == 2)
-		ft_swap_a(stack_a);
-	else if (size == 3)
-		case_three(stack_a);
-	else if (size == 4)
-		case_four(stack_a, stack_b);
-	else if (size == 5)
-		case_five(stack_a, stack_b);
 }

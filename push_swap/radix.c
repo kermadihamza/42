@@ -32,19 +32,19 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 	head_a = *stack_a;
 	size = ft_lstsize(head_a);
 	max_bits = get_max_bits(stack_a);
-	while (i < max_bits)
+	while (i < max_bits) //repeat for the number of beats
 	{
 		j = 0;
-		while (j++ < size)
+		while (j++ < size) //repeat as many numbers as
 		{
 			head_a = *stack_a;
-			if (((*(int *)(head_a->content) >> i) & 1) == 1)
+			if (((*(int *)(head_a->content) >> i) & 1) == 1) //If the least significant bit is 1, it is left on the stack a
 				ft_rotate_a(stack_a);
 			else
-				ft_push_b(stack_a, stack_b);
+				ft_push_b(stack_a, stack_b); //If 0, push b to stack
 		}
 		while (ft_lstsize(*stack_b) != 0)
-			ft_push_a(stack_a, stack_b);
+			ft_push_a(stack_a, stack_b); //Pass numbers from stack b to a
 		i++;
 	}
 }
