@@ -57,6 +57,7 @@ void	the_index(t_list *stack_a, int *number, int argc)
     data = malloc(sizeof(int) * argc);
 	if (!data)
 	{
+		free(data);
 		ft_error("Error\n");
 	}
     while(stack_a)
@@ -81,6 +82,7 @@ void	the_index(t_list *stack_a, int *number, int argc)
         copy_stack_a = copy_stack_a->next;
         i++;
     }
+	free(data);
 }
 
 

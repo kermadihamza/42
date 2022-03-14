@@ -24,7 +24,7 @@ void    case_five(t_list **stack_a, t_list **stack_b);
 void	the_index(t_list *stack_a, int *number, int argc);
 void	case_four(t_list **stack_a, t_list **stack_b);
 void	radix_sort(t_list **stack_a, t_list **stack_b);
-//void	free_stack(t_list **stack);
+//  void	free_stack(t_list **stack);
 void	ft_free(char **str);
 int	ft_error(char *str);
 int	ft_check_double(t_list *stack_a);

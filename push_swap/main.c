@@ -34,8 +34,9 @@ int main(int argc, char **argv)
         case_five(stack_a,stack_b);
      if(argc - 1 > 5)
         radix_sort(stack_a,stack_b);
-    //free_stack(stack_a);
-    //free_stack(stack_b);
-    system("leaks a.out");
-    //ft_printlst(stack_a);
+    free(number);
+    ft_lstclear(stack_a, NULL);
+    ft_lstclear(stack_b, NULL);
+    free(stack_a);
+    free(stack_b);
 }
