@@ -10,6 +10,19 @@ void ft_printlst(t_list *lst)
     }
 }
 
+int	ft_error(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(2, &str[i], 1);
+		i++;
+	}
+	return (0);
+}
+
 int *ft_pars(int argc, char **argv)
 {
 	int i;
@@ -18,7 +31,7 @@ int *ft_pars(int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_error("Error\n");
 		exit(1);
 	}
 	numbers = malloc(sizeof(int) * (argc - 1));
@@ -28,7 +41,6 @@ int *ft_pars(int argc, char **argv)
 		numbers[i - 1] = ft_atoi_push(argv[i]);
 		i++;
 	}
-
 	return (numbers);
 }
 
@@ -43,6 +55,10 @@ void	the_index(t_list *stack_a, int *number, int argc)
 
     copy_stack_a = stack_a;
     data = malloc(sizeof(int) * argc);
+	if (!data)
+	{
+		ft_error("Error\n");
+	}
     while(stack_a)
     {
         j = 0;
@@ -67,31 +83,37 @@ void	the_index(t_list *stack_a, int *number, int argc)
     }
 }
 
-int	is_sorted(t_list **stack)
-{
-	t_list	*head;
 
-	head = *stack;
-	while (head && head->next)
+int	ft_check_double(t_list *stack_a)
+{
+	t_list	*list_temp;
+
+	while (stack_a)
 	{
-		if (head->content > head->next->content)
-			return (0);
-		head = head->next;
+		list_temp = stack_a->next;
+		while (list_temp)
+		{
+			if (stack_a->content == list_temp->content)
+				return (0);
+			list_temp = list_temp->next;
+		}
+		stack_a = stack_a->next;
 	}
 	return (1);
 }
 
-void	free_stack(t_list **stack)
-{
-	t_list	*head;
-	t_list	*tmp;
 
-	head = *stack;
-	while (head)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-	free(stack);
-}
+// void	free_stack(t_list **stack)
+// {
+// 	t_list	*head;
+// 	t_list	*tmp;
+
+// 	head = *stack;
+// 	while (head)
+// 	{
+// 		tmp = head;
+// 		head = head->next;
+// 		free(tmp);
+// 	}
+// 	free(stack);
+// }

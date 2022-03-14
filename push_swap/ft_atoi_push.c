@@ -1,32 +1,28 @@
 #include "push_swap.h"
 
-int	ft_atoi_push(const char *str)
+int	ft_atoi_push(char *str)
 {
-	int 	result;
+	int		i;
 	int		sign;
+	long	result;
 
+	i = 0;
 	result = 0;
 	sign = 1;
-	if (*str == '-' || *str == '+')
+	if (str[i] == '-')
 	{
-		if (*str++ == '-')
-		{
-			sign *= -1;
-		}
+		sign *= -1;
+		i++;
 	}
-	while (*str >= '0' && *str <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result = result * 10 + *str++ - '0';
-		if (result < 0)
-        {
-            ft_putstr_fd("Error\n", 2);
-            exit(1);
-        }
+		result = result * 10 + str[i] - '0';
+		i++;
 	}
-    if (*str && !(*str >= '0' && *str <= '9'))
-    {
-        ft_putstr_fd("Error\n", 2);
-        exit(1);
-    }
-	return (sign * result);
+	if (str[i] != '\0')
+		ft_error("Error\n");
+	if (result > 2147483647 || result < -2147483648 || (result == -1 && sign == 1))
+		ft_error("Error\n");
+	result *= sign;
+	return (result);
 }

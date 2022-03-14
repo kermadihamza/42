@@ -69,54 +69,43 @@ void	case_four(t_list **stack_a, t_list **stack_b)
 	ft_push_a(stack_b, stack_a);
 }
 
-void	case_five(t_list **stack_a, t_list **stack_b)
+void case_five(t_list **stack_a, t_list **stack_b)
 {
     int i;
-    int first;
     int j;
-    t_list *temp_stack;
-
+    t_list *ptr;
     i = 0;
-    first = 0;
     j = 0;
-    (void) stack_b;
-
-    while(i++ < 3)
+    while (i++ < 3)
     {
-        temp_stack = *stack_a;
+        ptr = *stack_a;
         j = 0;
-        while (temp_stack)
+        while(ptr)
         {
-            if ((*(int *) temp_stack->content) < 3)
-            {
-                first = j;
-            }
-            temp_stack = temp_stack->next;
+            if((*(int *) ptr->content) < 3)
+                break;
+            ptr = ptr->next;
             j++;
         }
-        if (first <= 3)
+        if (j <= 3)
         {
-            while (first-- > 0)
+            while (j-- > 0)
                 ft_rotate_a(stack_a);
         }
         else
         {
-            while (first++ < 5)
+            while (j++ < 5)
                 ft_reverse_retate_a(stack_a);
         }
         ft_push_b(stack_a, stack_b);
         i++;
     }
     //ft_printlst(*stack_a);
-    //printf("_________________\n");
-    //ft_printlst(*stack_b);
-    //printf("_________________\n");
     t_list *stack = *stack_b;
     int a = (*(int *) stack->content);
     int b = (*(int *) stack->next->content);
-
-    if (a < b)
-        ft_swap_a(stack_b);
+    if(a < b)
+        ft_swap_b(stack_b);
     case_three(stack_a);
     ft_push_a(stack_a, stack_b);
     ft_push_a(stack_a, stack_b);
