@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static int	ft_contains(int num, char **argv, int i)
+static int	ft_check_duplicate(int num, char **argv, int i)
 {
 	i++;
 	while (argv[i])
@@ -47,7 +47,7 @@ void	ft_check_args(int argc, char **argv)
 		tmp = ft_atoi(args[i]);
 		if (!ft_isnum(args[i]))
 			ft_error("Error\n");
-		if (ft_contains(tmp, args, i))
+		if (ft_check_duplicate(tmp, args, i))
 			ft_error("Error\n");
 		i++;
 	}

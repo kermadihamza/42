@@ -12,15 +12,12 @@ void ft_printlst(t_list *lst)
 
 int	ft_error(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	while (*str)
 	{
-		write(2, &str[i], 1);
-		i++;
-	}
-	return (0);
+		write(2, str, 1);
+		str++;
+	}		
+	exit (0);
 }
 
 int *ft_pars(int argc, char **argv)
@@ -31,7 +28,6 @@ int *ft_pars(int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 	{
-		ft_error("Error\n");
 		exit(1);
 	}
 	numbers = malloc(sizeof(int) * (argc - 1));
@@ -83,25 +79,6 @@ void	the_index(t_list *stack_a, int *number, int argc)
         i++;
     }
 	free(data);
-}
-
-
-int	ft_check_double(t_list *stack_a)
-{
-	t_list	*list_temp;
-
-	while (stack_a)
-	{
-		list_temp = stack_a->next;
-		while (list_temp)
-		{
-			if (stack_a->content == list_temp->content)
-				return (0);
-			list_temp = list_temp->next;
-		}
-		stack_a = stack_a->next;
-	}
-	return (1);
 }
 
 

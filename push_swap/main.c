@@ -8,8 +8,6 @@ int main(int argc, char **argv)
     int i;
 
     i = 0;
-    number = ft_pars(argc, argv);
-
 	if (argc < 2)
 		return (-1);
 	ft_check_args(argc, argv);
@@ -17,9 +15,9 @@ int main(int argc, char **argv)
 	stack_b = (t_list **)malloc(sizeof(t_list));
 	*stack_a = NULL;
 	*stack_b = NULL;
+    number = ft_pars(argc, argv);
     while(i < argc - 1)
     {
-        //printf("%d\n", number[i]);
         ft_lstadd_back(stack_a, ft_lstnew(&number[i]));
         i++;
     }
