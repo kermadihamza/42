@@ -1,14 +1,16 @@
-#include "./libft/libft.h"
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/21 12:58:29 by hakermad          #+#    #+#             */
+/*   Updated: 2022/03/22 15:05:01 by hakermad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ft_printlst(t_list *lst)
-{
-    while (lst)
-    {
-    printf("%d\n", *((int *) lst->content));
-        lst = lst->next;
-    }
-}
+#include "push_swap.h"
 
 int	ft_error(char *str)
 {
@@ -20,10 +22,10 @@ int	ft_error(char *str)
 	exit (0);
 }
 
-int *ft_pars(int argc, char **argv)
+int	*ft_pars(int argc, char **argv)
 {
-	int i;
-	int *numbers;
+	int	i;
+	int	*numbers;
 
 	i = 1;
 	if (argc < 2)
@@ -31,7 +33,13 @@ int *ft_pars(int argc, char **argv)
 		exit(1);
 	}
 	numbers = malloc(sizeof(int) * (argc - 1));
-
+	if (!numbers)
+	{
+		free(numbers);
+		ft_error("Error\n");
+	}
+	if (argv[i][0] == '-' && argv[i][1] == '\0')
+			ft_error("Error\n");
 	while (argc > i)
 	{
 		numbers[i - 1] = ft_atoi_push(argv[i]);
@@ -40,59 +48,17 @@ int *ft_pars(int argc, char **argv)
 	return (numbers);
 }
 
-void	the_index(t_list *stack_a, int *number, int argc)
+int	if_sort(t_list *lst)
 {
-    int i;
-    int j;
-    int *data;
-    t_list *copy_stack_a;
-    i = 0;
-    int count;
+	int	i;
 
-    copy_stack_a = stack_a;
-    data = malloc(sizeof(int) * argc);
-	if (!data)
+	i = 1;
+	while (lst)
 	{
-		free(data);
-		ft_error("Error\n");
+		if (*(int *)lst->content != i)
+			return (0);
+		lst = lst->next;
+		i++;
 	}
-    while(stack_a)
-    {
-        j = 0;
-        count = 1;
-        while(j < argc - 1)
-        {
-            if (j != i && number[j] < number[i])
-                count++;
-            j++;
-        }
-        data[i] = count;
-       // (*(int *) stack_a->content) = data[i];  
-        stack_a = stack_a->next;
-        i++;
-    }
-    i = 0;
-    while (copy_stack_a)
-    {
-        (*(int *) copy_stack_a->content) = data[i];  
-        copy_stack_a = copy_stack_a->next;
-        i++;
-    }
-	free(data);
+	return (1);
 }
-
-
-// void	free_stack(t_list **stack)
-// {
-// 	t_list	*head;
-// 	t_list	*tmp;
-
-// 	head = *stack;
-// 	while (head)
-// 	{
-// 		tmp = head;
-// 		head = head->next;
-// 		free(tmp);
-// 	}
-// 	free(stack);
-// }

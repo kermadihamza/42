@@ -1,4 +1,4 @@
-SRCS = main.c utils.c ft_atoi_push.c push_swap.c sort_little.c radix.c ft_free.c ft_check.c operations/swap.c operations/push.c operations/rotate.c operations/reverse_rotate.c
+SRCS = main.c utils.c ft_atoi_push.c push_swap.c sort_little.c radix.c ft_free.c ft_check.c sort.c index.c operations/swap.c operations/push.c operations/rotate.c operations/reverse_rotate.c
 SRCS_BONUS = checker.c
 
 OBJS = ${SRCS:.c=.o}
