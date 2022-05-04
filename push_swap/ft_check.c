@@ -6,7 +6,11 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:46:30 by hakermad          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2022/04/04 15:17:29 by hakermad         ###   ########.fr       */
+=======
 /*   Updated: 2022/03/22 15:00:27 by hakermad         ###   ########.fr       */
+>>>>>>> 6dccd5a0e4288e2e9a14327401b00f643d300723
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +48,13 @@ void	ft_check_args(int argc, char **argv)
 {
 	int		i;
 	long	tmp;
+<<<<<<< HEAD
+	char	**args;
+
+	(void) argc;
+	i = 1;
+	args = argv;
+=======
 	char	**args;	
 
 	i = 0;
@@ -54,6 +65,7 @@ void	ft_check_args(int argc, char **argv)
 		i = 1;
 		args = argv;
 	}
+>>>>>>> 6dccd5a0e4288e2e9a14327401b00f643d300723
 	while (args[i])
 	{
 		tmp = ft_atoi(args[i]);
@@ -63,6 +75,9 @@ void	ft_check_args(int argc, char **argv)
 			ft_error("Error\n");
 		i++;
 	}
+<<<<<<< HEAD
+=======
 	if (argc == 2)
 		ft_free(args);
+>>>>>>> 6dccd5a0e4288e2e9a14327401b00f643d300723
 }
