@@ -6,11 +6,11 @@
 #    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 17:27:16 by hakermad          #+#    #+#              #
-#    Updated: 2022/05/23 17:27:35 by hakermad         ###   ########.fr        #
+#    Updated: 2022/05/26 16:26:53 by hakermad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_atoi.c parsing.c
+SRCS = parsing.c utils.c philo.c
 OBJS = $(SRCS:.c=.o)
 NAME = philo
 CC = gcc
