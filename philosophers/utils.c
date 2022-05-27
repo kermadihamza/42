@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 09:37:40 by hakermad          #+#    #+#             */
-/*   Updated: 2022/05/25 09:40:10 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:15:00 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,17 @@ long	real_time(void)
 	gettimeofday(&time, NULL);
 	res = (time.tv_sec * 1000) + (time.tv_usec / 1000);
 	return (res);
+}
+
+void	ft_sleep(t_global *global, int total_time)
+{
+	int start;
+
+	start = real_time();
+	while (global->dead == false)
+	{
+		if (real_time() - start >= total_time)
+			break;
+		usleep(100);
+	}
 }

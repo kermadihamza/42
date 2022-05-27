@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:18:46 by hakermad          #+#    #+#             */
-/*   Updated: 2022/05/26 17:21:46 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/05/27 18:57:49 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,41 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdatomic.h>
+#include <stdbool.h>     
 # include <sys/time.h>
 
 typedef struct s_global
 {
-	int number_of_philo;
-	int time_to_death;
-	int time_to_eat;
-	int time_to_sleep;
-	pthread_t	*thread_id;
-	long	start_timer;
-	struct s_philo *philo;
+	int				number_of_philo;
+	int				time_to_death;
+	int				time_to_eat;
+	int				time_to_sleep;
+	bool			dead;
+	pthread_t		*thread_id;
+	pthread_mutex_t *forks;
+	long			start_timer;
+	struct s_philo	*philo;
 }t_global;
 
 typedef struct s_philo
 {
-	int id;
-	int left;
-	int	right;
+	int		id;
+	int		left_fork;
+	int		right_fork;
 	t_global *global;
 }t_philo;
+
 
 int		ft_parse(t_global *global, int argc, char* argv[]);
 int		ft_atoi(const char *str);
 long	real_time(void);
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n);
-int create_thread(t_global *global);
-void routine_thread();
+int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
+int		create_thread(t_global *global);
+void	routine_thread();
+int		msg_exit(char *msg);
+void	ft_sleep(t_global *global, int total_time);
+void	print_log(t_philo *philo, char *message);
+int		init_mutex(t_global *global);
 
 #endif
 
