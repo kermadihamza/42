@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:18:46 by hakermad          #+#    #+#             */
-/*   Updated: 2022/05/27 18:57:49 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/05/28 16:42:40 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef struct s_global
 	int				time_to_death;
 	int				time_to_eat;
 	int				time_to_sleep;
-	bool			dead;
+	atomic_bool			dead;
 	pthread_t		*thread_id;
 	pthread_mutex_t *forks;
-	long			start_timer;
+	int64_t			start_timer;
 	struct s_philo	*philo;
 }t_global;
 
@@ -53,7 +53,7 @@ int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
 int		create_thread(t_global *global);
 void	routine_thread();
 int		msg_exit(char *msg);
-void	ft_sleep(t_global *global, int total_time);
+void	ft_sleep(int64_t time);
 void	print_log(t_philo *philo, char *message);
 int		init_mutex(t_global *global);
 

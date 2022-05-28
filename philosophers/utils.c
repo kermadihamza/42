@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 09:37:40 by hakermad          #+#    #+#             */
-/*   Updated: 2022/05/27 17:15:00 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/05/28 16:42:30 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_atoi(const char *str)
 
 long	real_time(void)
 {
-	long	res;
+	int64_t	res;
 	struct timeval time;
 	
 	gettimeofday(&time, NULL);
@@ -59,15 +59,17 @@ long	real_time(void)
 	return (res);
 }
 
-void	ft_sleep(t_global *global, int total_time)
+void	ft_sleep(int64_t time)
 {
-	int start;
+	int64_t	new_time;
+	int64_t	start;
 
 	start = real_time();
-	while (global->dead == false)
+	while (true)
 	{
-		if (real_time() - start >= total_time)
-			break;
-		usleep(100);
+		new_time = real_time();
+		if (new_time - start >= time)
+			break ;
+		usleep(50);
 	}
 }
