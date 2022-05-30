@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:18:46 by hakermad          #+#    #+#             */
-/*   Updated: 2022/05/28 16:42:40 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:50:36 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <stdatomic.h>
 #include <stdbool.h>     
 # include <sys/time.h>
+# include <inttypes.h>
+
 
 typedef struct s_global
 {
@@ -33,7 +35,8 @@ typedef struct s_global
 	atomic_bool			dead;
 	pthread_t		*thread_id;
 	pthread_mutex_t *forks;
-	int64_t			start_timer;
+	pthread_mutex_t printf_mutex;
+	long			start_timer;
 	struct s_philo	*philo;
 }t_global;
 
@@ -42,6 +45,8 @@ typedef struct s_philo
 	int		id;
 	int		left_fork;
 	int		right_fork;
+	int		counter_meal;
+	int		last_meal; 
 	t_global *global;
 }t_philo;
 
@@ -56,6 +61,7 @@ int		msg_exit(char *msg);
 void	ft_sleep(int64_t time);
 void	print_log(t_philo *philo, char *message);
 int		init_mutex(t_global *global);
+void    routine_printf(t_philo *philo, char *message);
 
 #endif
 
