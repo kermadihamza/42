@@ -6,11 +6,11 @@
 #    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 17:27:16 by hakermad          #+#    #+#              #
-#    Updated: 2022/05/28 16:16:41 by hakermad         ###   ########.fr        #
+#    Updated: 2022/06/10 13:33:36 by hakermad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = parsing.c utils.c philo.c msg_exit.c main.c
+SRCS = parsing.c utils.c philo.c msg_exit.c main.c ft_death.c
 OBJS = $(SRCS:.c=.o)
 NAME = philo
 CC = gcc

@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:18:44 by hakermad          #+#    #+#             */
-/*   Updated: 2022/05/30 16:07:27 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/06/10 13:34:56 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void routine_thread(t_philo *philo)
     if (philo->id % 2 == 0)
         ft_sleep(philo->global->time_to_eat / 2);
     ft_sleep(philo->global->time_to_eat);
-    while (19)
+    while (philo->global->dead == 0)
     {
         if (philo->id % 2)
         {
@@ -72,7 +72,7 @@ void    routine_printf(t_philo *philo, char *message)
 
     pthread_mutex_lock(&philo->global->printf_mutex);
     if (philo->global->dead == 0)
-        printf("%ld %d %s\n", real_time() - philo->global->start_timer, philo->id, message);
+        printf("%lld %d %s\n", real_time() - philo->global->start_timer, philo->id, message);
     pthread_mutex_unlock(&philo->global->printf_mutex);
 }
 
