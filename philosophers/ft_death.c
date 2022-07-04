@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:25:41 by hakermad          #+#    #+#             */
-/*   Updated: 2022/06/10 13:32:53 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:49:39 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void	ft_death(t_philo *philo, t_global *global)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (global->dead == 0)
+	while (global->dead != true)
 	{
-		if ((int)(real_time() - philo->last_meal) > global->time_to_death)
+		if ((int)(real_time() - philo[i].last_meal)
+			> global->time_to_death)
 		{
 			pthread_mutex_lock(&global->printf_mutex);
-			global->dead = 1;
-			printf("%"PRId64" %d is dead\n", real_time() - global->start_timer, global->philo[i].id);
+			global->dead = true;
+			printf("%"PRId64 " %d is dead\n", real_time()
+				- global->start_timer, global->philo[i].id);
 			pthread_mutex_unlock(&global->printf_mutex);
 		}
 		i++;
@@ -36,10 +38,48 @@ void	ft_death(t_philo *philo, t_global *global)
 
 void	death_checker(t_philo *philo, t_global *global)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (global->number_eat < philo->counter_meal)
-		global->dead = 1;
+	{
+		global->dead = true;
+	}
 	i++;
+}
+
+int	init_mutex(t_global *global)
+{
+	int	i;
+
+	i = 0;
+	while (i < global->number_of_philo)
+	{
+		if (pthread_mutex_init(&global->forks[i], NULL) != 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	ft_join_destro(t_philo *philo, t_global *global)
+{
+	int	i;
+
+	i = 0;
+	while (i < global->number_of_philo)
+	{
+		philo[i].id = i;
+		pthread_join(philo[i].thread_id, NULL);
+		pthread_mutex_destroy(&global->forks[i]);
+		i++;
+	}
+}
+
+void	ft_mix_func(t_philo *philo, t_global *global)
+{
+	init_mutex(global);
+	create_thread(philo, global);
+	ft_death(philo, global);
+	ft_join_destro(philo, global);
 }

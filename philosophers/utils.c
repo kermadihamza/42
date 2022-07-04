@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 09:37:40 by hakermad          #+#    #+#             */
-/*   Updated: 2022/05/30 15:48:36 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:42:19 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int	ft_atoi(const char *str)
 
 long	real_time(void)
 {
-	struct timeval time;
-	long	res;
-	
+	struct timeval	time;
+	long			res;
+
 	gettimeofday(&time, NULL);
 	res = (time.tv_sec * 1000) + (time.tv_usec / 1000);
 	return (res);
