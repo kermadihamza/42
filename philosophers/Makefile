@@ -6,15 +6,15 @@
 #    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 17:27:16 by hakermad          #+#    #+#              #
-#    Updated: 2022/07/04 16:08:36 by hakermad         ###   ########.fr        #
+#    Updated: 2022/08/08 14:27:04 by hakermad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = parsing.c utils.c philo.c msg_exit.c main.c ft_death.c
+SRCS = parsing.c utils.c philo.c main.c ft_death.c
 OBJS = $(SRCS:.c=.o)
 NAME = philo
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

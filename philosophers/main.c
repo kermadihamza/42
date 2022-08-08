@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 19:00:09 by hakermad          #+#    #+#             */
-/*   Updated: 2022/07/04 16:44:00 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/08/08 14:27:35 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	main(int argc, char *argv[])
 	global.forks = malloc(sizeof(pthread_mutex_t) * global.number_of_philo);
 	if (!global.forks)
 		return (0);
-	ft_mix_func(philo, &global);
+	mix_functions(philo, &global);
 	return (0);
 }

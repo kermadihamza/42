@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:18:44 by hakermad          #+#    #+#             */
-/*   Updated: 2022/07/04 16:49:14 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/08/08 15:56:53 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	routine_printf(t_philo *philo, char *message)
 	pthread_mutex_lock(&philo->global->printf_mutex);
 	if (philo->global->dead != true)
 		printf("%"PRId64 " %d %s\n", real_time()
-			- philo->global->start_timer, philo->id, message);
+			-philo->global->start_timer, philo->id + 1, message);
 	pthread_mutex_unlock(&philo->global->printf_mutex);
 }
 
@@ -43,9 +43,10 @@ void	*routine_thread(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
 		ft_sleep(philo->global->time_to_eat / 2);
-	ft_sleep(philo->global->time_to_eat);
 	while (philo->global->dead != true)
 	{
+		if (philo->global->number_of_philo == 1)
+			continue ;
 		ft_fork(philo);
 		routine_printf(philo, "is eating");
 		philo->counter_meal++;
