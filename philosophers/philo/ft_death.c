@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:25:41 by hakermad          #+#    #+#             */
-/*   Updated: 2022/08/08 15:55:29 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:23:23 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@ void	ft_death(t_philo *philo, t_global *global)
 		{
 			pthread_mutex_lock(&global->printf_mutex);
 			global->dead = true;
-			if (global->number_of_philo == 0)
-				printf("Arg not valid\n");
-			else
-				printf("%"PRId64 " %d died\n", real_time()
-					- global->start_timer, global->philo[i].id + 1);
+			printf("%"PRId64 " %d died\n", real_time()
+				- global->start_timer, global->philo[i].id + 1);
 			pthread_mutex_unlock(&global->printf_mutex);
 		}
 		i++;

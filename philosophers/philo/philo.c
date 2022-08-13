@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:18:44 by hakermad          #+#    #+#             */
-/*   Updated: 2022/08/08 15:56:53 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:25:36 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,20 @@ void	ft_fork(t_philo *philo)
 void	*routine_thread(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
-		ft_sleep(philo->global->time_to_eat / 2);
+		ft_sleep(philo->global, philo->global->time_to_eat / 2);
 	while (philo->global->dead != true)
 	{
 		if (philo->global->number_of_philo == 1)
 			continue ;
 		ft_fork(philo);
 		routine_printf(philo, "is eating");
-		philo->counter_meal++;
 		philo->last_meal = real_time();
-		ft_sleep(philo->global->time_to_eat);
+		ft_sleep(philo->global, philo->global->time_to_eat);
 		pthread_mutex_unlock(&philo->global->forks[philo->right_fork]);
 		pthread_mutex_unlock(&philo->global->forks[philo->left_fork]);
+		philo->counter_meal++;
 		routine_printf(philo, "is sleeping");
-		ft_sleep(philo->global->time_to_sleep);
+		ft_sleep(philo->global, philo->global->time_to_sleep);
 		routine_printf(philo, "is thinking");
 	}
 	return (NULL);

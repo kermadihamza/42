@@ -6,7 +6,7 @@
 #    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 17:27:16 by hakermad          #+#    #+#              #
-#    Updated: 2022/08/08 14:27:04 by hakermad         ###   ########.fr        #
+#    Updated: 2022/08/13 15:28:00 by hakermad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ OBJS = $(SRCS:.c=.o)
 NAME = philo
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-
 all: $(NAME)
 
 .c.o:

@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:18:46 by hakermad          #+#    #+#             */
-/*   Updated: 2022/08/08 14:27:38 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:25:51 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ typedef struct s_philo
 }t_philo;
 
 int		ft_parse(int argc, char **argv, t_global *global);
-int64_t	real_time(void);
+long	real_time(void);
 void	create_thread(t_philo *philo, t_global *global);
 void	*routine_thread(t_philo *philo);
-void	ft_sleep(int64_t time);
+void	ft_sleep(t_global *global, int time);
 void	print_log(t_philo *philo, char *message);
 int		init_mutex(t_global *global);
 void	routine_printf(t_philo *philo, char *message);
